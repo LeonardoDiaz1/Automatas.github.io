@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.115.4">
+    <link rel="shortcut icon" href="../src/icon.svg" type="image/x-icon">
+    <title>Automatas</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="../Index.html" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="./Analizador.html" class="nav-link">Analizador Semantico</a></li>
+                <li class="nav-item"><a href="./Compilador.html" class="nav-link">Compilador</a></li>
+                <li class="nav-item"><a href="./Arboles.html" class="nav-link">Arboles de Expresion</a></li>
+            </ul>
+        </header>
+    </div>
+    <br>
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+            <div class="col-lg-6 px-0">
+                <h1 class="display-4">Compilador</h1>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Elemplo</strong>
+                    </div>
+                    <div style="padding: 20px;" class="col-auto d-none d-lg-block">
+                        <img src="data:image/png;base64,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"
+                            alt="" width="355px" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success-emphasis">Ejemplo</strong>
+                    </div>
+                    <div style="padding: 20px;" class="col-auto d-none d-lg-block">
+                        <img src="http://patriciaemiguel.com/assets/2016-03-30-compiladores-interpretes-img1.jpg" alt=""
+                            width="309px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-8">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">Compilador</h3>
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1">Definición</h2>
+                    <br>
+                    <p>Compilador es aquel o aquello que compila: es decir, que reúne diversos elementos o fragmentos en
+                        una misma unidad. En el terreno de la informática, compilar consiste en traducir un programa
+                        escrito en un cierto lenguaje a otro.</p>
+                    <p>Un compilador, por lo tanto, es quien recopila algo. Si un individuo convoca a varios periodistas
+                        para que realicen entrevistas a referentes del mundo del deporte, y luego reúne esos trabajos en
+                        un libro, puede decirse que es el compilador de la obra en cuestión. Esta persona no hizo las
+                        entrevistas, sino que recopiló las entrevistas hechas por otros y las convirtió en una unidad.
+                    </p>
+                    <p>Decíamos que, en la informática, la compilación es un proceso que implica la traducción de un
+                        programa desarrollado en un determinado lenguaje de programación a otro que se escribe en un
+                        lenguaje distinto. Por lo general este segundo programa está hecho en lenguaje máquina, que es
+                        un código que pueden interpretar los procesadores de forma directa.</p>
+                    <p>En este proceso de compilación, se llama compilador al programa que se encarga de la traducción
+                        en cuestión. La compilación se divide en un análisis semántico, sintáctico y léxico del programa
+                        fuente y en la síntesis que se refleja en el lenguaje objeto. La tarea es llevada a cabo por el
+                        compilador, que según sus propiedades será calificado como compilador optimizador, compilador
+                        cruzado o compilador just in time (JIT).
+
+                        Además de todos estos aspectos sobre el compilador desde un punto de vista informático, hay
+                        otras cuestiones que merece la pena tener en cuenta como son estas:
+
+                        -Todo compilador de ese tipo dispone de dos partes bien diferenciadas: el Front End, que es la
+                        parte que se encarga de interactuar con el usuario y acomete el análisis del código fuente, y el
+                        Back End. Esta segunda parte es la que se encarga de proceder a generar el código en el formato
+                        de máquina.
+
+                        -Las funciones que lleva a cabo este software que nos ocupa podemos establecer que se llevan a
+                        cabo en este orden: fase de análisis (análisis léxico, análisis sintáctico y análisis
+                        semántico), fase de síntesis (generación de código intermedio) y optimización de código. Esta
+                        última etapa, que en ocasiones aparece incluida dentro de la de síntesis, consiste básicamente
+                        en mejorar lo que es el citado código intermedio de ahí que se pueda conseguir un código máquina
+                        que sea realmente muy rápido de ejecutar.
+
+                        -En fundamentales se han convertido los compiladores en nuestro día a día. Y es que realizan una
+                        labor vital. Sí, porque si ellos no existieran no podríamos hacer uso de todo tipo de
+                        aplicaciones informáticas. Son la base de la programación.</p>
+                    <hr>
+                    <h2>Funciones de un compilador en programación</h2>
+                    <br>
+                    <ul>
+                        <li><b>Análisis léxico:</b> el compilador divide el código fuente en una serie de tokens o
+                            símbolos que
+                            representan las palabras clave, identificadores, operadores y otros elementos del lenguaje
+                            de programación.</li>
+                        <li><b>Análisis sintáctico:</b> el compilador verifica la estructura del código fuente y su
+                            conformidad
+                            con la gramática del lenguaje de programación.</li>
+                        <li><b>Análisis semántico:</b> este verifica que las instrucciones del programa sean
+                            semánticamente
+                            correctas y coherentes, y realiza verificaciones como la asignación de tipos y la resolución
+                            de nombres.</li>
+                        <li><b>Generación de código intermedio:</b> este representa el programa de manera más abstracta
+                            y se
+                            puede optimizar antes de generar el código objeto.</li>
+                        <li><b>Optimización de código:</b> puede realizar una serie de optimizaciones en el código
+                            intermedio o
+                            en el código objeto para mejorar su eficiencia, como la eliminación de código redundante o
+                            la reorganización de las instrucciones para minimizar la cantidad de ciclos de procesador
+                            requeridos.</li>
+                        <li><b>Generación de código objeto:</b> el compilador finalmente genera el código objeto que se
+                            puede
+                            ejecutar en la computadora.</li>
+                        <li><b>Vinculación y carga:</b> si el programa utiliza bibliotecas externas, el compilador puede
+                            vincularlas al código objeto generado y generar un archivo ejecutable que se carga en la
+                            memoria de la computadora para su ejecución.</li>
+                    </ul>
+                    <p>En resumen, al desarrollar la idea de qué es un compilador hay que destacar que es responsable de
+                        transformar el código fuente de un programa en un código objeto ejecutable por la computadora,
+                        realizando una serie de análisis, optimizaciones y generaciones de código intermedio y objeto a
+                        lo largo del proceso.</p>
+                    <strong>Diferencias entre intérprete y compilador</strong>
+                    <p>Un intérprete y un compilador son dos herramientas de software que se utilizan en la programación
+                        de computadoras, pero tienen diferencias significativas en cuanto a su funcionamiento y uso. El
+                        intérprete es un programa que lee y ejecuta el código fuente línea por línea, mientras que el
+                        compilador es un programa que traduce todo el código fuente a un lenguaje de máquina antes de su
+                        ejecución.</p>
+                    <p>Una de las principales diferencias entre un intérprete y un compilador es el momento en que se
+                        realiza la traducción del código. En el caso del intérprete, la traducción del código se realiza
+                        línea por línea a medida que se ejecuta el programa, lo que significa que el programa se puede
+                        ejecutar directamente sin necesidad de una etapa de compilación previa. En cambio, el compilador
+                        traduce todo el código fuente a un lenguaje de máquina antes de su ejecución, lo que significa
+                        que el programa se debe compilar antes de su ejecución.</p>
+                    <p>Otra diferencia importante entre un intérprete y un compilador es la velocidad de ejecución.
+                        Debido a que el intérprete lee y ejecuta el código línea por línea, es más lento que el
+                        compilador en términos de velocidad de ejecución. El compilador, por otro lado, genera un código
+                        objeto optimizado que se puede ejecutar de manera más eficiente, lo que resulta en una velocidad
+                        de ejecución más rápida.</p>
+                    <p>En definitiva mientras que el intérprete es más flexible y permite una depuración más fácil, el
+                        compilador es más rápido y produce un código ejecutable más optimizado. Cada herramienta tiene
+                        sus propias ventajas y desventajas, y la elección entre un intérprete y un compilador dependerá
+                        del lenguaje de programación utilizado, la naturaleza del programa y las necesidades específicas
+                        del proyecto.</p>
+                    <hr>
+                    <h2>Código de máquina</h2>
+                    <br>
+                    <p>Cuando escribimos código en algún lenguaje de programación, normalmente éste necesita ser
+                        convertido a un lenguaje que la máquina pueda entender, que normalmente se llama “código de
+                        máquina” y son instrucciones específicas para el procesador, en números binarios. El tipo y
+                        cantidad de instrucciones depende de la marca y modelo del procesador (es por esto que los
+                        programas compilados para un tipo de procesador suelen no ser “portables” para cualquier otro).
+                    </p>
+                    <p>Absolutamente todo se traduce en este tipo de instrucciones. Los lenguajes de más alto nivel
+                        brindan una abstracción mucho mayor, es decir, nos evitan tener que involucrarnos con los
+                        detalles de cada instrucción. Esto es porque, habitualmente, una instrucción de alto nivel
+                        equivale a varias de bajo nivel (ver <a target="_blank"
+                            style="color: brown; text-decoration:none;"
+                            href="http://patriciaemiguel.com/conceptos/2016/03/29/lenguajes-de-bajo-y-alto-nivel.html">“Lenguajes
+                            de bajo y alto nivel”</a> ).</p>
+                    <p>Esta tarea de traducción del código que escribe un programador al código que entiende una máquina
+                        es realizada por otro programa: un compilador o un intérprete, dependiendo del lenguaje. Así,
+                        podemos decir que hay “lenguajes compilados” y “lenguajes interpretados”.</p>
+                    <h3>Lenguajes compilados</h3>
+                    <p>En un lenguaje compilado el programa que hace la traducción se llama “compilador” y se ejecuta
+                        una única vez sobre todo el código, generando uno o más archivos de código intermedio, que luego
+                        son finalmente convertidos en un archivo ejecutable. Luego de compilado y generado este archivo,
+                        el programa corre a partir del archivo ejecutable y no del código del programador. Es más: el
+                        código que escribió el programador se “pierde”, ya que el usuario sólo necesita el archivo
+                        ejecutable para poder correr el programa.</p>
+                    <h3>Lenguajes interpretados</h3>
+                    <p>En un lenguaje interpretado el programa que traduce se llama “intérprete” y toma de a una
+                        instrucción por vez, traduciéndola y ejecutándola. Este trabajo debe realizarse cada vez que se
+                        desee correr el programa, por lo que el código escrito por el programador persiste.</p>
+                    <h3>Categoría intermedia: bytecodes</h3>
+                    <p>Con una forma intermedia entre compilados e interpretados, se encuentran los lenguajes que
+                        requieren de una máquina virtual además de un compilador, y cuyo código es convertido a
+                        “bytecodes” (por ejemplo, Java). En este caso, el compilador no traduce a código de máquina
+                        directamente, sino que <i>compila</i> a una forma intermedia, llamada bytecodes. Éstos son
+                        instrucciones similares a las ejecutadas por un intérprete. La máquina virtual luego se encarga
+                        de <i>interpretar</i> y ejecutar los bytecodes directamente, uno a uno. Se suele utilizar esta
+                        técnica
+                        para facilitar la portabilidad e independencia de hardware y sistemas operativos.</p>
+                    <h3>Análisis de código Python</h3>
+                    <p>Python incluye el módulo <b>dis</b> que permite el análisis del código generado. A modo de
+                        ejemplo, se analizará una función muy sencilla, tal como es compilada por el compilador CPython.
+                    </p>
+                    <p>Lo primero que se debe hacer es importar el módulo. Para esto en el intérprete interactivo,
+                        ejecutar la instrucción <code>import dis.</code></p>
+                    <p>A continuación, definimos la siguiente función:</p>
+                    <div style="border-radius: 10px; height: 100px;"
+                        class="p-4 p-md-1 mb-4 rounded text-body-emphasis bg-body-secondary">
+                        <pre style="padding: 5px;">
+                            def funcion():
+                            x = 4
+                            z = 8
+                            return x + z
+                        </pre>
+                    </div>
+                    <p>Para analizar los bytecodes de esta función, deberemos ejecutar la instrucción dis.dis(funcion),
+                        lo que brindará la siguiente información:</p>
+                    <img src="http://patriciaemiguel.com/assets/2016-03-30-compiladores-interpretes-img2.png" alt="" />
+                    <p>Se pueden distinguir tres columnas de datos: la primera contiene números que identifican los
+                        números de línea de código (siendo la 1 la de la definición de la función, la 2 la línea donde
+                        se almacena el valor 4 en la variable x, etc.); la segunda columna indica el código de máquina
+                        ejecutado (precedido de su dirección específica) y la tercera indica el dato involucrado en la
+                        operación. Así, pueden verse las siguientes instrucciones:</p>
+                    <ul>
+                        <li>En la línea 2 se carga (load) una constante (aquí se llama “constante” a los literales) con
+                            el valor 4 en la pila (un segmento especial de la memoria) y luego se la almacena (store) en
+                            la variable x.</li>
+                        <li>En la línea 3 se repite lo mismo pero con la constante de valor 8 en la variable llamada z.
+                        </li>
+                        <li>Finalmente, la línea 4 carga (load) los valores de las variables x y z en la pila, realiza
+                            la suma (binary_add) y retorna el valor resultante.</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4">
+                        <h4 class="fst-italic">Fuentes Bibliograficas:</h4>
+                        <ol class="list-unstyled mb-0">
+                            <li>
+                                <a target="_blank"
+                                    href="http://patriciaemiguel.com/conceptos/2016/03/30/compiladores-interpretes.html">Compiladores
+                                    e intérpretes, lenguajes compilados e interpretados</a>
+                            </li>
+                            <li>
+                                <a target="_blank"
+                                    href="https://definicion.de/compilador/#:~:text=Compilador%20es%20aquel%20o%20aquello,un%20cierto%20lenguaje%20a%20otro.">
+                                    Definicion de COMPILADOR
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://immune.institute/blog/que-es-un-compilador/">¿Qué es un
+                                    compilador?
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </main>
+</body>
+
+</html>

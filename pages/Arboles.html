@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.115.4">
+    <link rel="shortcut icon" href="../src/icon.svg" type="image/x-icon">
+    <title>Automatas</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="../Index.html" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="./Analizador.html" class="nav-link">Analizador Semantico</a></li>
+                <li class="nav-item"><a href="./Compilador.html" class="nav-link">Compilador</a></li>
+                <li class="nav-item"><a href="./Arboles.html" class="nav-link">Arboles de Expresion</a></li>
+            </ul>
+        </header>
+    </div>
+    <br>
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+            <div class="col-lg-6 px-0">
+                <h1 class="display-4">Arboles de Expresion</h1>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Elemplo</strong>
+                    </div>
+                    <div style="padding: 20px;" class="col-auto d-none d-lg-block">
+                        <img src="https://1.bp.blogspot.com/-N318VxummgQ/XWRsLZK5WtI/AAAAAAAAATw/qp-elt9RXoU0-SZm_4Y7B2CG1MKeB0QZwCLcBGAs/s640/Captura.PNG"
+                            alt="" width="300px" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success-emphasis">Ejemplo</strong>
+                    </div>
+                    <div style="padding: 20px;" class="col-auto d-none d-lg-block">
+                        <img src="https://www.it.uc3m.es/java/2012-13/units/arboles/guides/2/img/ast_tree.jpg" alt=""
+                            width="328px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-8">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                    Arboles de Expresion
+                </h3>
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1">Definición</h2>
+                    <br>
+                    <p>En la ilustración siguiente se muestra un ejemplo de una expresión y su representación en
+                        forma de un árbol de expresión. Las diferentes partes de la expresión tienen un color
+                        distinto para hacerlas coincidir con el nodo correspondiente del árbol de expresión.
+                        También se muestran los diferentes tipos de los nodos del árbol de expresión.</p>
+                    <hr>
+                    <h2>Reglas para la contruccion de arboles de expresion</h2>
+                    <br>
+                    <p>Para contruir el árbol de expresiones que represente nuestra expresión matemática es
+                        necesario
+                        construir primero la misma expresión pero en la notación polaca correspondiente y a
+                        partir de
+                        esta es que se construye el árbol. El algoritmo usado para transformar una expresión
+                        infija a
+                        prefija es explicado a continuación.</p>
+                    <p>Sea A una expresión infija cualquiera, formada por operadores, paréntesis (izquierdos y
+                        derechos)
+                        y operandos, también se usará una pila para los operadores. El procedimiento seguido es
+                        el
+                        siguiente:</p>
+                    <p>Se lee un elemento de A, si este es un operador o un paréntesis izquierdo, entonces se
+                        actúa
+                        según la regla I y si es un operando entonces se envía directamente a la expresión de
+                        notación
+                        polaca. Si el elemento leído de A es un paréntesis derecho, entonces se desapilarán
+                        elementos de
+                        la pila de operadores hasta encontrar el correspodiente paréntesis izquierdo. Cada
+                        elemento
+                        desapilado pasa a formar parte de la notación polaca, excepto los paréntesis. Cuando no
+                        queden
+                        elementos en A, entonces se desapilan operadores de la pila, hasta que esta quede vacía.
+                    </p>
+                    <strong>Regla I:</strong>
+                    <p>Existe un orden de prioridad para los operadores, que de menor a mayor es el siguiente:
+                        suma (+) y resta (-), multiplicación (*) y división (/), exponenciación (^), operadores
+                        unarios. El paréntesis izquierdo lo trataremos como un operador (aunque no lo es) cuyo
+                        orden de prioridad es el mayor de todos cuando se quiera apilar y el menor de todos
+                        cuando esté en la cima de la pila.</p>
+                    <p>Cuando se intente apilar algún operador se hará lo siguiente: si es un operador unario
+                        entonces se apila, si es un operador binario, se comparará su prioridad con el último
+                        insertado en la pila (el de la cima), si su prioridad es mayor, entonces se apilará. Si
+                        ocurre lo contrario (su prioridad es menor o igual) entonces el operador de la cima de
+                        la pila se desapilará y pasará a formar parte de la notación polaca. Se volverá a
+                        intentar apilar el operador siguiendo la misma regla, hasta que se pueda apilar, si la
+                        pila queda vacía también se apila. El paréntesis izquierdo siempre se apilará y no podrá
+                        ser desapilado por ningún operador y por tanto no formará parte de la notación polaca
+                        inversa.</p>
+                    <p>El siguiente ejemplo, ayudará a entender mejor lo dicho anteriomente. Sea la siguiente
+                        expresión infija: 2^sin(y+x)–ln(x).</p>
+                    <p>En la siguiente tabla se muestra paso a paso la conversión a notación postfija. Se usa el
+                        color rojo para señalar los casos en que es necesario desapilar operadores de la pila.
+                    </p>
+                    <p>Construccion del árbol binario de expresiones
+                    </p>
+                    <br>
+                    <p>Una vez obtenida la expresión en notación postfija, se puede evaluar mediante el uso
+                        nuevamente de una pila. Sin embargo, en nuestro caso se trabaja con una árbol binario de
+                        expresiones, así que lo que se hace es construir el árbol. El algoritmo usado para
+                        construir el árbol no usa como tal la expresión postfija ya conformada, sino que el
+                        árbol se va construyendo usando las mismas reglas con las que se construye la notación
+                        postfija, una pila para los operadores y otra para los nodos del árbol, ambas no son
+                        necesitadas al terminar el árbol. El algoritmo es el siguiente:</p>
+                    <p>Se siguen las mismas reglas expuestas anteriormente usando la pila de operadores, pero
+                        cuando se encuentra un operando o un operador es desapilado, entonces se crea el nodo
+                        correspondiente y se actúa según la regla II. Al finalizar el algoritmo solo debe quedar
+                        un nodo apilado en la pila de nodos, el que constituye el nodo raíz de nuestro árbol de
+                        expresiones.</p>
+                    <strong>Regla II.</strong>
+                    <p>Si el nodo corresponde a un operando, entonces se apila. Si el nodo corresponde a una operador
+                        unario entonces se desapila un nodo de la pila de nodos y es enlazado a la rama izquierda del
+                        nodo correspondiente al operador unario y este último es apilado. Si el nodo corresponde a un
+                        operador binario entonces dos nodos son desapilados de la pila de nodos, el primero es enlazado
+                        a la rama derecha del nodo binario y el segundo a la rama izquierda, nuevamente este nodo es
+                        apilado.</p>
+                    <p>En el siguiente ejemplo se usa la misma expresión infija anterior (2^sin(y+x) – ln (x)) para
+                        ilustrar el procedimiento para construir el árbol:</p>
+                    <p>Recorrido en preorden</p>
+                    <p>En este tipo de recorrido se realiza cierta acción (quizás simplemente imprimir por pantalla el
+                        valor de la clave de ese nodo) sobre el nodo actual y posteriormente se trata el subárbol
+                        izquierdo y cuando se haya concluido, el subárbol derecho. Otra forma para entender el recorrido
+                        con este metodo seria seguir el orden: nodo raiz, nodo izquierda, nodo derecha.</p>
+                    <p>En el árbol de la figura el recorrido en preorden sería: 2, 7, 2, 6, 5, 11, 5, 9 y 4.</p>
+                    <pre>
+                        void preorden(tArbol *a)
+                        {
+                            if (a != NULL) {
+                                tratar(a);         //Realiza una operación en nodo
+                                preorden(a->hIzquierdo);
+                                preorden(a->hDerecho);
+                            }
+                        }
+                    </pre>
+                    <p>Implementación en pseudocódigo de forma iterativa:</p>
+                    <pre>
+                        push(s,NULL); 
+                        push(s,raíz);                       //insertamos el nodo raíz
+                        MIENTRAS (s <> NULL) HACER
+                            p = pop(s);                     //sacamos un elemento de la pila
+                            tratar(p);                      //realizamos operaciones sobre el nodo p
+                            SI (D(p) <> NULL)               //preguntamos si p tiene árbol derecho
+                                 ENTONCES push(s,D(p));
+                            FIN-SI
+                            SI (I(p) <> NULL)               //preguntamos si p tiene árbol izquierdo
+                                 ENTONCES push(s,I(p));
+                            FIN-SI
+                    </pre>
+                    <hr>
+                    <h2>Árboles N-arios y sistemas de ficheros</h2>
+                    <br>
+                    <p>Hasta ahora hemos trabajado con árboles binarios, pero no son el único tipo de árbol existente.
+                        En algunas ocasiones necesitamos árboles más flexibles que nos permitan tener, por cada nodo, un
+                        número N de nodos hijo que no tiene por qué ser exactamente dos, y que puede ser diferente para
+                        cada nodo. Esta estructura de datos es lo que se conoce como árbol N-ario y se muestra en la
+                        figura 1 . Cada nodo del árbol contiene una referencia a la información que se quiere almacenar
+                        ( info ), y un conjunto de referencias a los nodos hijo ( children ). Para acceder a todos los
+                        nodos del árbol tan sólo necesitamos una referencia a su nodo raíz ( root ), tal y como ocurría
+                        en el caso de árboles binarios.</p>
+                    <strong>Figura 1. Representación gráfica de un árbol N-ario</strong>
+                    <br><br>
+                    <center><img src="https://www.it.uc3m.es/java/2012-13/units/arboles/guides/2/img/NaryTree.png"
+                            alt=""></center>
+                    <p>En este ejercicio vamos a ver un ejemplo en el que se necesitan árboles N-arios: los sistemas de
+                        ficheros. Supongamos que tenemos el siguiente sistema de ficheros (también conocido como árbol
+                        de directorios):</p>
+                    <div style="border-radius: 10px; height: 275px;"
+                        class="p-4 p-md-1 mb-4 rounded text-body-emphasis bg-body-secondary">
+                        <pre style="padding: 5px;">
+                            C:
+                                |_Archivos de programa
+                                  |_Eclipse
+                                  |_Java
+                                |_Mis documentos
+                                  |_Imagenes
+                                  |_Musica
+                                  |_Videos
+                                |_ProgSis
+                                  |_Proyecto
+                                    |_Modulo1
+                                    |_Modulo2
+                        </pre>
+                    </div>
+                    <p>Tal y como su nombre indica, todos los directorios o carpetas (en nuestro caso, para simplificar,
+                        vamos a ignorar los archivos) se organizan en forma de árbol: existe un nodo raíz (C:) que
+                        contiene varias carpetas, cada una de las cuales contiene a su vez más carpetas, y así
+                        sucesivamente. Para crear y manejar este sitema de ficheros, vamos a tomar la estructura
+                        genérica mostrada en la figura 1 , y la vamos a particularizar para adaptarla al caso que nos
+                        ocupa. Los nodos de la imagen serán nuestras carpetas. Cada carpeta está representada mediante
+                        un objeto de tipo Folder . Cada uno de estos objetos posee dos atributos:</p>
+                    <ul>
+                        <li><code>name</code> es un atributo de tipo <code>string</code> que almacena el nombre de la
+                            carpeta.</li>
+                        <li><code>subdirectories</code> es un atributo de tipo <code>Vector</code> que almacena los
+                            subdirectorios (objetos de tipo <code>Folder</code> ) que contiene la carpeta.</li>
+                    </ul>
+                    <p>Para representar el sistema de ficheros, haremos uso de una clase <code>FileSystem</code> que
+                        desempeña el
+                        papel de árbol, puesto que es la que contiene una referencia al nodo raíz (atributo
+                        <code>root</code> de tipo
+                        <code>Folder</code> ), desde el cual se puede acceder al resto de carpetas (nodos) del sistema
+                        de ficheros.
+                    </p>
+                    <p>La figura 2 representa el sistema de ficheros del ejemplo previo representado mediante los
+                        objetos Java que vamos a manejar.</p>
+                    <center><img
+                            src="https://www.it.uc3m.es/java/2012-13/units/arboles/guides/2/img/fileSystemJava-es.png"
+                            alt=""></center>
+                </article>
+            </div>
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4">
+                        <h4 class="fst-italic">Fuentes Bibliograficas:</h4>
+                        <ol class="list-unstyled mb-0">
+                            <li>
+                                <a target="_blank"
+                                    href="https://alexisbladimirlopezfigueroa1998.blogspot.com/2019/08/arboles-de-expresiones.html">Lenguajes
+                                    y Autómatas 2
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank"
+                                    href="https://www.it.uc3m.es/java/2012-13/units/arboles/guides/2/guide_es.html">
+                                    Árboles
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </main>
+</body>
+
+</html>
+
+</html>

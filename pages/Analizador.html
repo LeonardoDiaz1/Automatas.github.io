@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.115.4">
+    <link rel="shortcut icon" href="../src/icon.svg" type="image/x-icon">
+    <title>Automatas</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="../Index.html" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="./Analizador.html" class="nav-link">Analizador Semantico</a></li>
+                <li class="nav-item"><a href="./Compilador.html" class="nav-link">Compilador</a></li>
+                <li class="nav-item"><a href="./Arboles.html" class="nav-link">Arboles de Expresion</a></li>
+            </ul>
+        </header>
+    </div>
+    <br>
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+            <div class="col-lg-6 px-0">
+                <h1 class="display-4">Analizador Semantico</h1>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Elemplo</strong>
+                        <h3 class="mb-0">Arbol de Analisis</h3>
+                    </div>
+                    <div style="padding: 20px;" class="col-auto d-none d-lg-block">
+                        <img src="https://goldenphoenix95.files.wordpress.com/2016/06/31.png?w=416&h=348" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success-emphasis">Ejemplo</strong>
+                        <h3 class="mb-0">Arbol de Analisis</h3>
+                    </div>
+                    <div style="padding: 20px;" class="col-auto d-none d-lg-block">
+                        <img src="https://2.bp.blogspot.com/_O5Jh6-fS0-c/TONUxbnm0wI/AAAAAAAAAAw/wbonnwSCx7U/s1600/Diapositiva1.JPG"
+                            alt="" width="312px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-8">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                    1.3.4. Análisis Semántico
+                </h3>
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1">Definición</h2>
+                    <br>
+                    <p>El analizador semantico debera comprobar que estas dos restricciones se cumplen antes de declarar
+                        que la sentencia de asignacion esta bien formada. Pero sucede que la informacion necesaria
+                        para comprobarlas es util tambien para generar codigo. Esto quiere decir que si tuvieramos una
+                        separacion estricta entre las fases del compilador, para generar codigo deberiamos volver a
+                        mirar
+                        el identificador para saber a que objeto (variable, funcion, constante, etc.) corresponde y que
+                        tipo
+                        tiene y tambien deberiamos volver a comprobar los tipos de la expresion para generar el codigo
+                        adecuado.</p>
+                    <br>
+                    <p>Se compone de un conjunto de rutinas independientes, llamadas por los analizadores morfológico y
+                        sintáctico.
+
+                        El análisis semántico utiliza como entrada el árbol sintáctico detectado por el análisis
+                        sintáctico para comprobar restricciones de tipo y otras limitaciones semánticas y preparar la
+                        generación de código.
+
+                        En compiladores de un solo paso, las llamadas a las rutinas semánticas se realizan directamente
+                        desde el analizador sintáctico y son dichas rutinas las que llaman al generador de código. El
+                        instrumento más utilizado para conseguirlo es la gramática de atributos.
+
+                        En compiladores de dos o más pasos, el análisis semántico se realiza independientemente de la
+                        generación de código, pasándose información a través de un archivo intermedio, que normalmente
+                        contiene información sobre el árbol sintáctico en forma linealizada (para facilitar su manejo y
+                        hacer posible su almacenamiento en memoria auxiliar).
+
+                        En cualquier caso, las rutinas semánticas suelen hacer uso de una pila (la pila semántica) que
+                        contiene la información semántica asociada a los operandos (y a veces a los operadores) en forma
+                        de registros semánticos.</p>
+                    <hr>
+                    <h2>Propagación de atributos</h2>
+                    <br>
+                    <p>Sea la expresión</p>
+                    <pre>
+                        int a,b,c; 
+                        a/(b+c^2)
+                    </pre>
+                    <p>El árbol sintáctico es:</p>
+                    <pre>
+                            /
+                        ---------
+                        |       |
+                        a       +
+                            ---------
+                            |       |
+                            b       ^
+                                ---------
+                                |       |
+                                c       2
+                  
+                    </pre>
+                    <p>De la instrucción declarativa, la tabla de símbolos y el analizador morfológico obtenemos los
+                        atributos de los operandos:</p>
+                    <pre>
+                            /
+                        ---------
+                        |       |
+                        a       +
+                       int  ---------
+                            |       |
+                            b       ^
+                           int  ---------
+                                |       |
+                                c       2
+                               int     int
+                    </pre>
+                    <p>Propagando los atributos obtenemos:</p>
+                    <pre>
+                            / int
+                        ---------
+                        |       |
+                        a       + int
+                       int  ---------
+                            |       |
+                            b       ^ int
+                           int  ---------
+                                |       |
+                                c       2
+                               int     int
+                    </pre>
+                    <p>Si la expresión hubiera sido</p>
+                    <pre>
+                        a/(b+c^-2)
+                    </pre>
+                    <p>El árbol sintáctico sería el mismo, sustituyendo 2 por -2. Sin embargo, la propagación de
+                        atributos sería diferente:</p>
+                    <pre>
+                          / real
+                        ---------
+                        |       |
+                        a       + real
+                        int  ---------
+                            |       |
+                            b       ^ real
+                            int  ---------
+                                |       |
+                                c      -2
+                                int     int
+                    </pre>
+                    <p>En algún caso podría llegar a producirse error (p.e. si / representara sólo la división entera).
+                    </p>
+                    <p>Si la expresión hubiera sido</p>
+                    <pre>
+                        int a,b,c,d; 
+                        a/(b+c^d)
+                    </pre>
+                    <p>El árbol sintáctico sería el mismo, sustituyendo 2 por d. Sin embargo, la propagación de
+                        atributos sería incompleta:</p>
+                    <pre>
+                            / {int,real}
+                        ---------
+                        |       |
+                        a       + {int,real}
+                       int  ---------
+                            |       |
+                            b       ^ {int,real}
+                           int  ---------
+                                |       |
+                                c       d
+                               int     int
+                    </pre>
+                    <p>El analizador semántico podría reducir los tipos inseguros al tipo máximo (real) o utilizar un
+                        tipo interno nuevo (ej. arit={int,real}, una unión).</p>
+                    <p>Lo anterior es un ejemplo de propagación bottom-up. La propagación top-down también es posible:
+                        lo que se transmite son las restricciones y los tipos de las hojas sirven de comprobación. Por
+                        ejemplo, si la división sólo puede ser entera, transmitimos hacia abajo la restricción de que
+                        sus operandos sólo pueden ser enteros. Al llegar a d, esa restricción se convierte en que d debe
+                        ser positiva. Si no lo es, error.</p>
+                    <p>La implantación de todos los casos posibles de operación con tipos mixtos podría ser
+                        excesivamente cara. En su lugar, se parte de operaciones relativamente simples (ej. int+int,
+                        real+real) y no se implementan las restantes (ej. int+real, real+int), añadiendo en su lugar
+                        operaciones monádicas de cambio de tipo (ej. int->real).</p>
+                    <p>Esta decisión puede introducir ambigüedades. Por ejemplo, sea el programa</p>
+                    <pre>
+                        real a;
+                        int b,c;
+                        a:=b+c
+                    </pre>
+                    <p>El árbol sintáctico es:</p>
+                    <pre>
+                            :=
+                        ---------
+                        |       |
+                        a       +
+                        real  ---------
+                            |       |
+                            b       c
+                            int     int
+
+                    </pre>
+                    <p>Existen dos conversiones posibles:</p>
+                    <pre>
+                            := real                     := real
+                        ---------                   ---------
+                        |       |                   |       |
+                        a       + real              a       + int
+                        real  ---------             real  ---------
+                            |       |                   |       |
+                            b       c                   b       c
+                            int     int                 int     int
+                    </pre>
+                    <p>El problema es que no tenemos garantía de que los dos procedimientos sean equivalentes. El
+                        segundo puede dar overflow, el primero pérdida de precisión. La definición del lenguaje debe
+                        especificar estos casos.</p>
+                    <p>Las transformaciones posibles se pueden representar mediante un grafo cuyos nodos son los tipos
+                        de datos y cada arco indica una transformación. Dado un operando de tipo A que se desea
+                        convertir al tipo B, se trata de encontrar una cadena de arcos que pase de A a B en el grafo
+                        anterior. Podría haber varios grafos, cada uno de los cuales se aplicará en diferentes
+                        condiciones, por ejemplo, uno para las asignaciones, otro para las expresiones, etc.</p>
+                    <hr>
+                    <h2>Gramática de atributos</h2>
+                    <br>
+                    <p>Es una extensión de la notación de Backus que consiste en introducir en las reglas sintácticas
+                        ciertos símbolos adicionales no sintácticos (símbolos de acción) que, en definitiva, se reducen
+                        a llamadas implícitas o explícitas a rutinas semánticas.</p>
+                    <p>Por ejemplo: sea la gramática simplificada que analiza las instrucciones de asignación:</p>
+                    <pre>
+                        &lt;AsSt&gt; ::= id #PId := &lt;Exp&gt; #RAs
+                        &lt;Exp&gt;  ::= &lt;Exp&gt; + &lt;T&gt; #RS | &lt;T&gt;
+                        &lt;T&gt;    ::= id #PId | Ct #PCt
+                    </pre>
+                    <p>Se observará que hemos hecho uso de cuatro símbolos de acción:</p>
+                    <ul>
+                        <li><b>#PId:</b> PUSH a la pila semántica el registro asociado al identificador.</li>
+                        <li><b>#PCt:</b> PUSH a la pila semántica el registro asociado a la constante.</li>
+                        <li><b>#RS:</b> Realizar suma: POP los dos registros superiores de la pila; comprobar que es
+                            posible
+                            sumarlos; realizar la suma (mediante una llamada al generador de código) o generar
+                            representación intermedia (si es una compilación en dos o más pasos); PUSH registro
+                            semántico del resultado en la pila semántica.</li>
+                        <li><b>#RAs:</b> Realizar asignación: POP los dos registros superiores de la pila; comprobar que
+                            es
+                            posible realizar la asignación; realizarla (mediante una llamada al generador de código) o
+                            generar representación intermedia (si es una compilación en dos o más pasos).</li>
+                    </ul>
+                    <p>En los analizadores sintácticos top-down basados en gramáticas LL(1), la introducción de los
+                        símbolos de acción en las rutinas correspondientes es trivial. En los analizadores bottom-up
+                        basados en gramáticas SLR(1) es más delicado, pues los estados del análisis se mueven
+                        simultáneamente sobre varias reglas. Sólo en el momento de realizar una reducción sabemos
+                        exactamente dónde estamos. Por ello, se suele introducir la restricción de que los símbolos de
+                        acción deben estar situados únicamente al final de una regla. Cuando no se cumple esto (como en
+                        el ejemplo anterior) es trivial conseguirlo, introduciendo símbolos no terminales adicionales.
+                        Algunos generadores de analizadores sintácticos (como YACC) lo realizan automáticamente. En
+                        nuestro ejemplo, quedaría:</p>
+                    <pre>
+                        &lt;AsSt&gt; ::= id #PId := &lt;Exp&gt; #RAs
+                        &lt;Exp&gt;  ::= &lt;Exp&gt; + &lt;T&gt; #RS | &lt;T&gt;
+                        &lt;T&gt;    ::= id #PId | Ct #PCt
+                    </pre>
+                    <p>Poner un ejemplo del análisis sintáctico-semántico bottom-up de la instrucción A := B + 1.</p>
+                    <p>Otro ejemplo: instrucciones condicionales con las reglas</p>
+                    <pre>
+                        &lt;Instr&gt; ::= If &lt;Expr&gt; #S2 then &lt;Instr&gt; #S1 |
+                            If &lt;Expr&gt; #S2 then &lt;Instr&gt; else #S3 &lt;Instr&gt; #S1
+                    </pre>
+                    <p>Más adelante se verá cuáles son las tres acciones semánticas. Para que todas queden al final de
+                        una regla, basta cambiar estas reglas por:</p>
+                    <pre>
+                        &lt;Instr&gt; ::= If &lt;Expr1&gt; then &lt;Instr&gt; #S1 |
+                                    If &lt;Expr1&gt; then &lt;Instr&gt; Else &lt;Instr&gt; #S1
+                                  &lt;Expr1&gt; ::= &lt;Expr&gt; #S2
+                                  &lt;Else&gt;  ::= else #S3
+                    </pre>
+                    <hr>
+                    <h2>Generación de representaciones intermedias</h2>
+                    <br>
+                    <p>Existen dos representaciones intermedias principales:</p>
+                    <ul>
+                        <li>Notación sufija</li>
+                        <li>Cuádruplas</li>
+                    </ul>
+                    <p>Los operadores diádicos (o binarios) pueden especificarse mediante tres notaciones principales:
+                    </p>
+                    <ul>
+                        <li>Prefija: el operador diádico es analizado antes que sus operandos.</li>
+                        <li>Infija: el operador diádico es analizado entre sus operandos.</li>
+                        <li>Sufija: el operador diádico es analizado después que sus operandos.</li>
+                    </ul>
+                    <p>En los lenguajes de programación clásicos, los operadores diádicos se representan usualmente en
+                        notación infija. La notación prefija permite al operador influir sobre la manera en que se
+                        procesan sus operandos, pero a cambio suele exigir mucha más memoria. La sufija no permite esa
+                        influencia, pero es óptima en proceso de memoria y permite eliminar el procesado de los
+                        paréntesis.</p>
+                    <p>Los operadores monádicos sólo pueden presentarse en notación prefija o sufija.</p>
+                    <p>Además, un árbol sintáctico puede representarse en forma de tuplas de n elementos, de la forma
+                        (operador, operando-1, ..., operando-k, nombre). Las tuplas pueden tener longitud variable o
+                        fija (con operandos nulos). Las más típicas son las cuádruplas, aunque éstas pueden
+                        representarse también en forma de tripletes.</p>
+                    <h3>Notación sufija</h3>
+                    <p>TLlamada también postfija o polaca inversa, se usa para representar expresiones sin necesidad de
+                        paréntesis.</p>
+                    <p>Ejemplos:</p>
+                    <pre>
+                        a*b          ab*
+                        a*(b+c/d)    abcd/+*
+                        a*b+c*d      ab*cd*+
+                    </pre>
+                    <p>Los identificadores aparecen en el mismo orden. Los operadores en el de evaluación (de izquierda
+                        a derecha).</p>
+                    <p>Problema: operadores monádicos (unarios). O bien se transforman en diádicos (binarios) o se
+                        cambia el símbolo.</p>
+                    <p>Ejemplo: -a se convierte en 0-a o en @a</p>
+                    <pre>
+                        a*(-b+c/d)   ab@cd/+*
+                    </pre>
+                    <p>Existen dos problemas principales:</p>
+                    <ul>
+                        <li>Construir la notación sufija a partir de la infija.</li>
+                        <li>Analizar la notación sufija en el segundo paso de la compilación.</li>
+                    </ul>
+                    <strong>Rutina semántica para transformar de infijo a sufijo</strong>
+                    <p>Si el analizador sintáctico es bottom-up, hacemos la siguiente suposición: "Cuando aparece un no
+                        terminal V en el asidero, la cadena polaca correspondiente a la subcadena que se redujo a V ya
+                        ha sido generada".</p>
+                    <p>Se utiliza una pila donde se genera la salida, inicialmente vacía. Las acciones semánticas
+                        asociadas a las reglas son:</p>
+                    <pre>
+                        E ::= E + T           Push +
+                        E ::= E - T           Push -
+                        E ::= T
+                        T ::= T * F           Push *
+                        T ::= T / F           Push /
+                        T ::= F
+                        F ::= i               Push i
+                        F ::= (E)
+                        F ::= - F             Push @                      
+                    </pre>
+                    <strong>Análisis de la notación sufija</strong>
+                    <p>La gramática completa que permite analizar la notación sufija es:</p>
+                    <pre>
+                        &lt;Operando&gt; ::= id |
+                                     cte |
+                                     &lt;Operando&gt; &lt;Operando&gt; &lt;Operador diádico&gt; |
+                                     &lt;Operando&gt; &lt;Operador monádico&gt;
+                        &lt;Operador diádico&gt; ::= + | - | * | / | ...
+                        &lt;Operador monádico&gt; ::= @ | ...
+                    </pre>
+                    <p>Algoritmo de evaluación de una expresión en notación sufija que utiliza una pila:</p>
+                    <ul>
+                        <li>
+                            Si el próximo símbolo es un identificador, se pasa a la pila. Corresponde a la aplicación de
+                            la regla <br>
+                            <code>&lt;Operando&gt; ::= id</code>
+                        </li>
+                        <li>
+                            Si el próximo símbolo es una constante, se pasa a la pila. Corresponde a la aplicación de la
+                            regla <br>
+                            <code>&lt;Operando&gt; ::= cte</code>
+                        </li>
+                        <li>
+                            Si el próximo símbolo es un operador diádico, se aplica el operador a los dos operandos
+                            situados en lo alto de la pila y se sustituyen éstos por el resultado de la operación.
+                            Corresponde a la aplicación de la regla <br>
+                            <code>&lt;Operando&gt; ::= &lt;Operando&gt; &lt;Operando&gt; &lt;Operador diádico&gt; &lt;Operador&gt;</code>
+                        </li>
+                        <li>
+                            Si el próximo símbolo es un operador monádico, se aplica el operador al operando situado en
+                            lo alto de la pila y se sustituye éste por el resultado de la operación. Corresponde a la
+                            aplicación de la regla <br>
+                            <code>&lt;Operando&gt; ::= &lt;Operando&gt; &lt;Operador monádico&gt; &lt;Operador&gt;</code>
+                        </li>
+                    </ul>
+                    <p>Ejemplo: calcular ab@cd/+*.</p>
+                    <strong>Extensión de la notación sufija a otros operadores</strong>
+                    <ul>
+                        <li>
+                            La asignación, teniendo en cuenta que podemos no querer valor resultante. Además, no
+                            interesa tener en la pila el valor del identificador izquierdo, sino su dirección.
+                            <pre>
+                                a:=b*c+d     abc*d+:=
+                            </pre>
+                        </li>
+                        <li>
+                            La transferencia (GOTO).
+                            <pre>GOTO L       L TR</pre>
+                        </li>
+                        <li>
+                            La instrucción condicional <br>
+                            <code>if p then inst1 else inst2</code> <br>
+                            se convierte en
+                            <br>
+                            <code>p L1 TRZ inst1 L2 TR inst2</code>
+                            <pre>
+                                L1:   L2:
+                            </pre>
+                        </li>
+                        <li>
+                            Subíndices: <br>
+                            <code>a[exp1; exp2; ...; expn]</code> <br>
+                            se convierte en <br>
+                            <code>a exp1 exp2 ... expn SUBIN-n</code>
+                        </li>
+                    </ul>
+                    <hr>
+                    <h2>Cuádruplas</h2>
+                    <br>
+                    <p>Una operación diádica se puede representar mediante la cuádrupla</p>
+                    <pre>
+                        (&lt;Operador&gt;, &lt;Operando1&gt;, &lt;Operando2&gt;, &lt;Resultado&gt;)
+                    </pre>
+                    <p>Ejemplo:</p>
+                    <pre>
+                        (*,A,B,T)
+                    </pre>
+                    <p>Una expresión se puede representar mediante un conjunto de cuádruplas. Ejemplo: la expresión
+                        a*b+c*d equivale a:</p>
+                    <pre>
+                        (*,a,b,t1)
+                        (*,c,d,t2)
+                        (+,t1,t2,t3)
+                    </pre>
+                    <p>Ejemplo: la expresión c:=a[i;b[j]] equivale a:</p>
+                    <pre>
+                        (*,i,d1,t1)
+                        (+,t1,b[j],t2)
+                        (:=,a[t2],,c)
+                    </pre>
+                    <h3>Tripletes</h3>
+                    <p>No se pone el resultado, se sustituye por referencias a tripletes. Por ejemplo: la expresión
+                        a*b+c*d equivale a:</p>
+                    <pre>
+                        (1) (*,a,b)
+                        (2) (*,c,d)
+                        (3) (+,(1),(2))
+                    </pre>
+                    <p>mientras que a*b+1 equivale a:</p>
+                    <pre>
+                        (1) (*,a,b)
+                        (2) (*,(1),1)
+                    </pre>
+                    <p>Tripletes indirectos: se numeran arbitrariamente los tripletes y se da el orden de ejecución.
+                        Ejemplo, sean las instrucciones:</p>
+                    <pre>
+                        a := b*c
+                        b := b*c
+                    </pre>
+                    <p>Equivalen a los tripletes</p>
+                    <pre>
+                        (1) (*,b,c)
+                        (2) (:=,(1),a)
+                        (3) (:=,(1),b)
+                    </pre>
+                    <p>y el orden de ejecución es (1),(2),(1),(3). Esta forma es útil para preparar la optimización de
+                        código. Si hay que alterar el orden de las operaciones o eliminar alguna, es más fácil hacerlo
+                        ahí.</p>
+                    <strong>Generación automática de cuádruplas</strong>
+                    <p>En un análisis bottom-up, asociamos a cada símbolo no terminal una información semántica, y a
+                        cada regla de producción una acción semántica. Ejemplo, sea la gramática</p>
+                    <pre>
+                        E ::= E + T
+                        E ::= E - T
+                        E ::= T
+                        T ::= T * F
+                        T ::= T / F
+                        T ::= F
+                        F ::= i
+                        F ::= (E)
+                        F ::= -F
+                    </pre>
+                    <p>La regla F::=i asocia a F como información semántica el identificador concreto.</p>
+                    <p>La regla F::=(E) asocia a F como información semántica la información semántica asociada a E.</p>
+                    <p>La regla U::=V asocia a U como información semántica la información semántica asociada a V.</p>
+                    <p>La regla U::=VoW analiza la compatibilidad de los operandos, crea la cuádrupla
+                        (o,Sem(V),Sem(W),Ti) y asocia a U la información semántica Ti.</p>
+                    <p>La regla U::=oV crea la cuádrupla (o,Sem(V),,Ti) y asocia a U la información semántica Ti.</p>
+                    <p>La información semántica se suele almacenar en otra pila paralela.</p>
+                    <p>Ejemplo: análisis de a*(b+c)</p>
+                    <pre>
+                        Pila             Entrada         Regla        Cuádrupla
+                        -----------      -------------   ------------ ---------
+                        |                a*(b+c)|
+                        |a               *(b+c)|         F::=i
+                        |F(a)            *(b+c)|         T::=F
+                        |T(a)            *(b+c)|
+                        |T(a)*           (b+c)|
+                        |T(a)*(          b+c)|
+                        |T(a)*(b         +c)|            F::=i
+                        |T(a)*(F(b)      +c)|            T::=F
+                        |T(a)*(T(b)      +c)|            E::=T
+                        |T(a)*(E(b)      +c)|
+                        |T(a)*(E(b)+     c)|
+                        |T(a)*(E(b)+c    )|              F::=i
+                        |T(a)*(E(b)+F(c) )|              T::=F
+                        |T(a)*(E(b)+T(c) )|              E::=E+T
+                        |T(a)*(E(b)+T(c) )|              E::=E+T      (+,b,c,T1)
+                        |T(a)*(E(T1)     )|
+                        |T(a)*(E(T1))    |               F::=(E)
+                        |T(a)*F(T1)      |               T::=T*F      (*,a,T1,T2)
+                        |T(T2)           |               E::=T
+                        |E(T2)           |
+                    </pre>
+                    <strong>Ejemplo de generación de cuádruplas en análisis top-down</strong>
+                    <pre>
+                        unsigned int E (char *cadena, unsigned int i)
+                        {
+                            if (i&lt;0) return i;
+                            switch (cadena[i]) {
+                            case 'i':
+                                push (id);
+                                i++;
+                                i = V (cadena, i);
+                                break;
+                            case '(':
+                                i++;
+                                i = E (cadena, i);
+                                i = C (cadena, i);
+                                i = V (cadena, i);
+                                break;
+                            default: return -1;
+                                }
+                            return i;
+                        }
+
+                        unsigned int V (char *cadena, unsigned int i)
+                        {
+                            unsigned int j;
+                            if (i&lt;0) return i;
+                            switch (cadena[i]) {
+                            case '*':
+                            case '/':
+                                j = i;
+                                i++;
+                                i = T (cadena, i);
+                                cuad (cadena[j], pop(), pop(), gen(Ti));
+                                push (Ti);
+                                i = X (cadena, i);
+                                break;
+                            case '+':
+                            case '-':
+                                j = i;
+                                i++;
+                                i = E (cadena, i);
+                                cuad (cadena[j], pop(), pop(), gen(Ti));
+                                push (Ti);
+                                break;
+                                }
+                            return i;
+                        }
+
+                        unsigned int X (char *cadena, unsigned int i)
+                        {
+                            unsigned int j;
+                            if (i&lt;0) return i;
+                            switch (cadena[i]) {
+                            case '+':
+                            case '-':
+                                j = i;
+                                i++;
+                                i = E (cadena, i);
+                                cuad (cadena[j], pop(), pop(), gen(Ti));
+                                push (Ti);
+                                break;
+                                }
+                            return i;
+                        }
+
+                        unsigned int T (char *cadena, unsigned int i)
+                        {
+                            if (i&lt;0) return i;
+                            switch (cadena[i]) {
+                            case 'i':
+                                push (id);
+                                i++;
+                                i = U (cadena, i);
+                                break;
+                            case '(':
+                                i++;
+                                i = E (cadena, i);
+                                i = C (cadena, i);
+                                i = U (cadena, i);
+                                break;
+                            default: return -2;
+                                }
+                            return i;
+                        }
+
+                        unsigned int U (char *cadena, unsigned int i)
+                        {
+                            if (i&lt;0) return i;
+                            unsigned int j;
+                            switch (cadena[i]) {
+                            case '*':
+                            case '/':
+                                j = i;
+                                i++;
+                                i = T (cadena, i);
+                                cuad (cadena[j], pop(), pop(), gen(Ti));
+                                push (Ti);
+                                break;
+                                }
+                            return i;
+                        }
+
+                        unsigned int F (char *cadena, unsigned int i)
+                        {
+                            if (i&lt;0) return i;
+                            switch (cadena[i]) {
+                            case 'i':
+                                push (id);
+                                i++;
+                                break;
+                            case '(':
+                                i++;
+                                i = E (cadena, i);
+                                i = C (cadena, i);
+                                break;
+                            default: return -3;
+                                }
+                            return i;
+                        }
+
+                        unsigned int C (char *cadena, unsigned int i)
+                        {
+                            if (i&lt;0) return i;
+                            switch (cadena[i]) {
+                            case ')':
+                                i++;
+                                break;
+                            default: return -4;
+                                }
+                            return i;
+                        }
+                    </pre>
+                    <strong>Semántica de instrucciones condicionales</strong>
+                    <p>Sean las reglas</p>
+                    <pre>
+                        &lt;Instr&gt; ::= If &lt;Expr&gt; S2 then &lt;Instr&gt; S1 |
+                                    If &lt;Expr&gt; S2 then &lt;Instr&gt; else S3 &lt;Instr&gt; S1
+                    </pre>
+                    <p>Una secuencia de cuádruplas equivalente a "If E1 then I1 else I2"</p>
+                    <pre>
+                        (p-1)  (?,?,?,t1)         Análisis de E1
+                        (p)    (TRZ,(q+1),t1,)    S2: Crear cuádrupla (p) | Push p
+                                ...                Análisis de I1
+                        (q)    (TR,(r),,)         S3: Crear cuádrupla (q)
+                                                    Poner (cl.sig.) en top | Pop
+                                                    Push (q)
+                        (q+1)  ...                Análisis de I2
+                        (r)                       S1: Poner (cl.sig.) en top | Pop
+                    </pre>
+                    <p>Una secuencia de cuádruplas equivalente a "If E1 then I1"</p>
+                    <pre>
+                        (p-1)  (?,?,?,t1)         Análisis de E1
+                        (p)    (TRZ,(r),t1,)      S2: Crear cuádrupla (p) | Push p
+                                ...                Análisis de I1
+                        (r)                       S1: Poner (cl.sig.) en top | Pop
+                    </pre>
+                    <p>Al generar la cuádrupla (p) no conocemos el valor de (q). Guardamos en una pila el número de la
+                        cuádrupla asociada y lo rellenamos más tarde, como indican los ejemplos.</p>
+                    <strong>Semántica de etiquetas y GOTO</strong>
+                    <p>Suponemos que las etiquetas aparecen en la tabla de símbolos con tres valores asociados:
+                        (tipo=etiqueta, bit=declarada/no declarada, número de cuádrupla).</p>
+                    <p>Sea la regla</p>
+                    <code>
+                        &lt;Instr&gt; ::= id : &lt;Instr&gt;
+                    </code>
+                    <p>Semántica asociada:</p>
+                    <pre>
+                        {
+                        Buscar id en la tabla de símbolos;
+                        if (no está)
+                          Insertar id,valor=(etiqueta, declarada, cuádrupla siguiente);
+                        else {
+                          if (tipo==etiqueta && bit==no declarada) {
+                            i=número de cuádrupla;
+                            while (i) {
+                              j=cuádrupla[i][2];
+                              cuádrupla[i][2]=cuádrupla siguiente;
+                              i=j;
+                              }
+                            Cambiar valor a (etiqueta, declarada, cuádrupla siguiente);
+                            }
+                          else error();
+                          }
+                        }
+                    </pre>
+                    <p>Sea la regla</p>
+                    <code>
+                        &lt;Instr&gt; ::= GOTO id
+                    </code>
+                    <p>Semántica asociada:</p>
+                    <pre>
+                        {
+                        Buscar id en la tabla de símbolos;
+                        if (no está) {
+                          Insertar id,valor=(etiqueta, no declarada, cuádr.siguiente);
+                          Generar cuádrupla (TR,,,);
+                          }
+                        else {
+                          if (tipo==etiqueta) {
+                            if (bit==declarada)
+                              Generar cuádrupla (TR,número de cuádrupla,,);
+                            else if (bit==no declarada) {
+                              i=número de cuádrupla;
+                              Cambiar valor a (etiqueta, no declarada, cuádr.siguiente);
+                              Generar cuádrupla (TR,i,,);
+                              }
+                            }
+                          else error();
+                          }
+                        }
+                    </pre>
+                    <p>Si se permiten etiquetas locales a bloques, podemos encontrar el siguiente caso:</p>
+                    <pre>
+                        L:  ...
+                            {
+                                ...
+                                GOTO L;
+                                ...
+                    </pre>
+                    <p>Tenemos ambigüedad: GOTO L puede ir a la etiqueta externa (ya definida o no) o a una etiqueta
+                        local al bloque posterior a la instrucción. Tenemos tres posibilidades:</p>
+                    <ul>
+                        <li>Un compilador en dos pasos.</li>
+                        <li>Forzar declaraciones de etiquetas.
+                        </li>
+                        <li>Tratar L en el bloque como si fuera local. Si al final del bloque descubrimos que no ha sido
+                            declarada, tratarla como si fuera global. La lista de referencias debería fundirse con la de
+                            L global (si L global no ha sido definida aún) o rellenarse con el valor de L (si ya ha sido
+                            definida). Si L global no existe, debe crearse, y pasarle la lista de referencias de L
+                            local.</li>
+                    </ul>
+                    <strong>Semántica de bloques</strong>
+                    <p>Sean las reglas</p>
+                    <pre>
+                        &lt;Instr&gt; ::= do &lt;id&gt; := &lt;Expr&gt; S1
+                                    , &lt;Expr&gt; S2
+                                    &lt;CD1&gt; &lt;LInstr&gt; end S5
+                        &lt;CD1&gt;   ::= , &lt;Expr&gt; S3 | ^ S4
+                    </pre>
+                    <p>Semántica asociada al análisis de "do x:=n1,n2,n3; I1; I2; end":</p>
+                    <ul>
+                        <li>S1:
+                            <ul style="list-style: none;">
+                                <li><code>Generar cuádruplas asociadas a instrucción de asignación x:=n1.</code></li>
+                                <li><code>Guardar i=número de cuádrupla siguiente.</code></li>
+                            </ul>
+                        </li>
+                        <li>S2:
+                            <ul style="list-style: none;">
+                                <li><code>Guardar j=número de cuádrupla siguiente.</code></li>
+                                <li><code>Generar cuádrupla (TRG,,x,(n2)).</code></li>
+                                <li><code>Generar cuádrupla (TR,,,).</code></li>
+                            </ul>
+                        </li>
+                        <li>S3:
+                            <ul style="list-style: none;">
+                                <li><code>Generar cuádrupla (+,x,(n3),x).</code></li>
+                                <li><code>Generar cuádrupla (TR,(i),,).</code></li>
+                                <li><code>Hacer cuádrupla[j+1][2]=cuádrupla siguiente.</code></li>
+                            </ul>
+                        </li>
+                        <li>S5:
+                            <ul style="list-style: none;">
+                                <li><code>Generar cuádrupla (TR,(j+2),,).</code></li>
+                                <li><code>Hacer cuádrupla[j][2]=cuádrupla siguiente.</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Además, S4:</p>
+                    <ul style="list-style: none;">
+                        <li>Generar cuádrupla (:=,x,1,x).</li>
+                        <li>Generar cuádrupla (TR,(i),,).</li>
+                        <li>Hacer cuádrupla[j+1][2]=cuádrupla siguiente.</li>
+                    </ul>
+                    <hr>
+                    <h2>Evaluación óptima de las expresiones booleanas</h2>
+                    <br>
+                    <p>Las operaciones booleanas usualmente se definen así:</p>
+                    <pre>
+                        O | T  F   Y | T  F   NO| T  F
+                        --|-----   --|-----   --|-----
+                        T | T  T   T | T  F     | F  T
+                        F | T  F   F | F  F
+                    </pre>
+                    <p>y la sintaxis adecuada para que la precedencia sea: NO, Y, O. Sin embargo, es posible
+                        simplificarlas considerablemente. Basta fijarse en la expresión</p>
+                    <pre>a Y (b O NO c)</pre>
+                    <p>Si a es falso, no hace falta calcular el paréntesis, sabemos que el resultado es falso. Por
+                        tanto, redefiniremos la sintaxis y la semántica así:</p>
+                    <pre>
+                        &lt;ZB&gt; ::= &lt;EB&gt;
+                        &lt;EB&gt; ::= &lt;TB&gt; O &lt;EB&gt; | &lt;TB&gt;
+                        &lt;TB&gt; ::= &lt;FB&gt; Y &lt;TB&gt; | &lt;FB&gt;
+                        &lt;FB&gt; ::= i | ( &lt;EB&gt; ) | NO &lt;FB&gt;
+                      
+                        a O b <=> if (a) TRUE else b;
+                        a Y b <=> if (a) b else FALSE;
+                        NO a  <=> if (a) FALSE else TRUE;
+                    </pre>
+                    <strong>Análisis top-down</strong>
+                    <p>El programa queda:</p>
+                    <pre>
+                        void ZB (char *cadena)
+                        {
+                          int FL=0, TL=0, i;
+                          cuad (":=", "T", NULL, x);
+                          i = EB (cadena, 0, &FL, &TL);
+                          FILL (FL);
+                          cuad (":=", "F", 0, x);
+                          FILL (TL);
+                        }
+                      
+                        unsigned int EB (char *cadena, unsigned int i, int *FL, int *TL)
+                        {
+                          int tl=0;
+                          i = TB (cadena, i, FL, &tl);
+                          MERGE (TL, tl);
+                          if (i&lt;strlen(cadena)) switch (cadena[i]) {
+                            case 'O':
+                              i++;
+                              FILL (*FL);
+                              *FL = 0;
+                              i = EB (cadena, i, FL, TL);
+                              break;
+                            default:
+                              break;
+                              }
+                          return i;
+                        }
+                      
+                        unsigned int TB (char *cadena, unsigned int i, int *FL, int *TL)
+                        {
+                          int fl=0;
+                          i = FB (cadena, i, &fl, TL);
+                          MERGE (FL, fl);
+                          if (i&lt;strlen(cadena)) switch (cadena[i]) {
+                            case 'Y':
+                              i++;
+                              FILL (*TL);
+                              *TL = 0;
+                              i = TB (cadena, i, FL, TL);
+                              break;
+                            default:
+                              break;
+                              }
+                          return i;
+                        }
+                      
+                        unsigned int FB (char *cadena, unsigned int i, int *FL, int *TL)
+                        {
+                          if (i&lt;strlen(cadena)) switch (cadena[i]) {
+                            case 'i':
+                              i++;
+                              *TL = cuádrupla siguiente;
+                              *FL = - cuádrupla siguiente;
+                              cuad (TRB, id, 0, 0);
+                              break;
+                            case '(':
+                              i++;
+                              i = EB (cadena, i, FL, TL);
+                              i = C (cadena, i);
+                              break;
+                            case 'NO':
+                              i++;
+                              i = FB (cadena, i, FL, TL);
+                              *FL <-> *TL
+                              break;
+                            default: error (cadena, i);
+                              }
+                          else error (cadena, i);
+                          return i;
+                        }
+                      
+                        unsigned int C (char *cadena, unsigned int i)
+                        {
+                          if (i&lt;strlen(cadena)) switch (cadena[i]) {
+                            case ')':
+                              i++;
+                              break;
+                            default: error (cadena, i);
+                              }
+                          else error (cadena, i);
+                          return i;
+                        }
+                      
+                        void FILL (int lista)
+                        {
+                          int i,j,n;
+                          n = lista;
+                          while (n) {
+                            if (n>0) i=2; else i=3;
+                            j = abs (n);
+                            n = cuad[j][i];
+                            cuad[j][i] = cuádrupla siguiente;
+                            }
+                        }
+                      
+                        void MERGE (int *uno, int dos)
+                        {
+                          int i,k;
+                          if (*uno==0) *uno = dos;
+                          else {
+                            k = *uno;
+                            for (;;) {
+                              if (k>0) i=2; else i=3;
+                              k = abs (k);
+                              if (cuad[k][i]==0) break;
+                              k = quad[k][i];
+                              }
+                            cuad[k][i] = dos;
+                            }
+                        }
+                      Analicemos "a O b O NO c"
+                      
+                        ZB ("a O b O NO c")
+                          cuad (":=", "T", NULL, "X");
+                          i = EB ("a O b O NO c", 0, &FL, &TL);
+                            i = TB ("a O b O NO c", 0, FL, &tl);
+                              i = FB ("a O b O NO c", 0, &fl, TL);
+                                case id:
+                                  i=1;
+                                  *TL = 1;
+                                  fl = -1;
+                                  cuad (TRB, a, 0, 0);
+                              MERGE (FL, fl);
+                                FL = -1;
+                            MERGE (TL, tl);
+                                TL = 1;
+                            case 'O':
+                              i=2;
+                              FILL (FL);
+                                n = -1;
+                                while (n) {
+                                  i = 3;
+                                  j = 1; (abs(FL))
+                                  n = 0; (cuad[1][3])
+                                  cuad[1][3] = 2;
+                                  }
+                              FL = 0;
+                              i = EB ("a O b O NO c", 2, FL, TL);
+                                i = TB ("a O b O NO c", 2, FL, &tl);
+                                  i = FB ("a O b O NO c", 2, &fl, TL);
+                                    case 'i':
+                                      i=3;
+                                      *TL = 2;
+                                      *fl = -2;
+                                      cuad (TRB, b, 0, 0);
+                                  MERGE (FL, fl);
+                                    FL = -2;
+                                MERGE (TL, tl);
+                                  k = 1;
+                                  for (;;) {
+                                    i = 2;
+                                    k = 1;
+                                    }
+                                    cuad[1][2] = 2;
+                                case 'O':
+                                  i=4;
+                                  FILL (FL);
+                                    n = -2;
+                                    while (n) {
+                                      i = 3;
+                                      j = 2;  (abs (n))
+                                      n = 0;  (cuad[2][3])
+                                      cuad[2][3] = 3;
+                                      }
+                                  FL = 0;
+                                  i = EB ("a O b O NO c", 4, FL, TL);
+                                    i = TB ("a O b O NO c", 4, FL, &tl);
+                                      i = FB ("a O b O NO c", 4, &fl, TL);
+                                        case 'NO':
+                                          i=5;
+                                          i = FB ("a O b O NO c", 5, FL, TL);
+                                            case 'i':
+                                              i=6;
+                                              *TL = 3;
+                                              *FL = -3;
+                                              cuad (TRB, c, 0, 0);
+                                          FL <-> TL
+                                      MERGE (FL, fl);
+                                        FL = 3;
+                                    MERGE (TL, tl);
+                                      k = 1;
+                                      for (;;) {
+                                        i = 2;
+                                        k = 1;  (abs (k))
+                                        k = 2;  (cuad[1][2])
+                                        }
+                                      cuad[2][2] = -3;
+                          FILL (FL);
+                            cuad[3][2] = 4;
+                          cuad (":=", "F", 0, "X");
+                          FILL (TL);
+                            cuad[1][2] = 5;
+                            cuad[2][2] = 5;
+                            cuad[3][3] = 5;
+                        </pre>
+                    <p>Cuádruplas obtenidas:</p>
+                    <pre>
+                            0: (":=", "T",, x);
+                            1: ("TRB", a, 5, 2);
+                            2: ("TRB", b, 5, 3);
+                            3: ("TRB", c, 4, 5);
+                            4: (":=", "F",, x);
+                            5:
+                    </pre>
+                </article>
+            </div>
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4">
+                        <h4 class="fst-italic">Fuentes Bibliograficas:</h4>
+                        <ol class="list-unstyled mb-0">
+                            <li>
+                                <a target="_blank" href="http://arantxa.ii.uam.es/~alfonsec/docs/compila5.htm">Capítulo
+                                    5. Análisis semántico
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank"
+                                    href="https://www3.uji.es/~vjimenez/AULASVIRTUALES/PL-0910/T4-SEMANTICO/semantico.apun.pdf">
+                                    Ingenieria Informatica II26 Procesadores de lenguaje
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </main>
+</body>
+
+</html>
